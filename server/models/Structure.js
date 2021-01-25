@@ -12,13 +12,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       unique: true,
     },
-    pcdExists: Sequelize.BOOLEAN,
+    pcdExist: Sequelize.BOOLEAN,
     visionStrategique: Sequelize.BOOLEAN,
     autreDocument: Sequelize.STRING,
-    dimensionStrategiques: Sequelize.JSONB,
-    facteurSuccess: Sequelize.JSONB,
-    indicateurPerformanceDegre: Sequelize.JSONB,
-    indicateurPerformanceDecisions: Sequelize.JSONB,
+    dimensionStrategique: Sequelize.JSONB,
+    facteurSuccessIndicateurPerformance: Sequelize.JSONB,
+    indicateursDePerformanceDegreImportance: Sequelize.JSONB,
+    indicateursDePerformancePriseDecision: Sequelize.JSONB,
   });
   return Structure;
 };
