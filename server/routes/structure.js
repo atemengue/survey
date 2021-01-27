@@ -9,10 +9,14 @@ const {
   table5,
   table6,
   table7,
+  table8,
+  table9,
+  communes,
 } = require('../controllers/StructureController');
 
 module.exports = (app) => {
   app.post('/api/structures', create_commune);
+  app.get('/api/structures', communes);
   app.get('/api/structures/pcd', commune_with_pcd);
   app.get('/api/structures/table2', table2);
   app.get('/api/structures/table3', table3);
@@ -20,4 +24,6 @@ module.exports = (app) => {
   app.get('/api/structures/table5', table5);
   app.get('/api/structures/table6', table6);
   app.get('/api/structures/table7', table7);
+  app.get('/api/structures/table8', table8);
+  app.get('/api/structures/table9', table9);
 };

@@ -17,6 +17,15 @@ exports.create_commune = async (req, res) => {
   }
 };
 
+exports.communes = async (req, res) => {
+  try {
+    const communes = await Structure.findAll();
+    res.status(200).send(communes);
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+};
+
 // Tableau 1: Situation  des CTD selon qu'elles disposent  ou non d'un PCD
 exports.commune_with_pcd = async (req, res) => {
   try {
@@ -77,8 +86,6 @@ exports.table2 = async (req, res) => {
   }
 };
 
-// Tableau 4: Répartition des CTD par dimension de performance susceptibles d'affecter l'évaluation de la performance suivant  qu'elle dispose d'un PCD
-
 exports.table3 = async (req, res) => {
   try {
     const communes = await Structure.findAll({
@@ -119,7 +126,13 @@ exports.table3 = async (req, res) => {
   }
 };
 
+// Tableau 4: Répartition des CTD par dimension de performance susceptibles d'affecter l'évaluation de la performance suivant  qu'elle dispose d'un PCD
+
+// Tableau 4: Répartition des CTD par outil de vision stratégique     selon l'existence ou non du PCD
+
 exports.table4 = async (req, res) => {};
+
+// Tableau 5: Répartition des CTD par outil de vision stratgique selon les dimensions pouvant affecter la performance
 
 exports.table5 = async (req, res) => {};
 
@@ -182,6 +195,8 @@ exports.table6 = async (req, res) => {
   }
 };
 
+// Tableau 7: Répartition des CTD par facteurs clés de succès selon leur perception de l'importance desdits facteurs dans l'atteinte de la performance de la CTD
+
 exports.table7 = async (req, res) => {
   try {
     const communes = await Structure.findAll({
@@ -235,6 +250,130 @@ exports.table7 = async (req, res) => {
       });
     }
     res.status(200).send({ successFactors });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
+};
+
+// Tableau 8: Répartition des CTD par Indicateur de performance selon leur perception de l'importance desits indicateurs
+
+exports.table8 = async (req, res) => {
+  try {
+    const communes = await Structure.findAll({
+      raw: true,
+    });
+
+    const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
+    const indicateursImportance = {};
+    if (communes) {
+      const keys = Object.keys(
+        communes[0].indicateursDePerformanceDegreImportance
+      );
+      for (const key of keys) {
+        indicateursImportance[key] = {};
+        for (degre of degres) {
+          indicateursImportance[key][degre] = 0;
+        }
+      }
+      communes.map((commune) => {
+        keys.map((valueKey) => {
+          switch (commune.indicateursDePerformanceDegreImportance[valueKey]) {
+            case 1:
+              indicateursImportance[valueKey][degres[5]] =
+                (indicateursImportance[valueKey][degres[5]] || 0) + 1;
+              break;
+
+            case 2:
+              indicateursImportance[valueKey][degres[4]] =
+                (indicateursImportance[valueKey][degres[4]] || 0) + 1;
+              break;
+
+            case 3:
+              indicateursImportance[valueKey][degres[3]] =
+                (indicateursImportance[valueKey][degres[3]] || 0) + 1;
+              break;
+            case 4:
+              indicateursImportance[valueKey][degres[2]] =
+                (indicateursImportance[valueKey][degres[2]] || 0) + 1;
+              break;
+            case 5:
+              indicateursImportance[valueKey][degres[1]] =
+                (indicateursImportance[valueKey][degres[1]] || 0) + 1;
+              break;
+            case 6:
+              indicateursImportance[valueKey][degres[0]] =
+                (indicateursImportance[valueKey][degres[0]] || 0) + 1;
+              break;
+
+            default:
+              break;
+          }
+        });
+      });
+    }
+    res.status(200).send({ indicateursImportance });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error });
+  }
+};
+
+exports.table9 = async (req, res) => {
+  try {
+    const communes = await Structure.findAll({
+      raw: true,
+    });
+
+    const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
+    const indicateursDecisions = {};
+    if (communes) {
+      const keys = Object.keys(
+        communes[0].indicateursDePerformancePriseDecision
+      );
+      for (const key of keys) {
+        indicateursDecisions[key] = {};
+        for (degre of degres) {
+          indicateursDecisions[key][degre] = 0;
+        }
+      }
+      communes.map((commune) => {
+        keys.map((valueKey) => {
+          switch (commune.indicateursDePerformancePriseDecision[valueKey]) {
+            case 1:
+              indicateursDecisions[valueKey][degres[5]] =
+                (indicateursDecisions[valueKey][degres[5]] || 0) + 1;
+              break;
+
+            case 2:
+              indicateursDecisions[valueKey][degres[4]] =
+                (indicateursDecisions[valueKey][degres[4]] || 0) + 1;
+              break;
+
+            case 3:
+              indicateursDecisions[valueKey][degres[3]] =
+                (indicateursDecisions[valueKey][degres[3]] || 0) + 1;
+              break;
+            case 4:
+              indicateursDecisions[valueKey][degres[2]] =
+                (indicateursDecisions[valueKey][degres[2]] || 0) + 1;
+              break;
+            case 5:
+              indicateursDecisions[valueKey][degres[1]] =
+                (indicateursDecisions[valueKey][degres[1]] || 0) + 1;
+              break;
+            case 6:
+              indicateursDecisions[valueKey][degres[0]] =
+                (indicateursDecisions[valueKey][degres[0]] || 0) + 1;
+              break;
+
+            default:
+              break;
+          }
+        });
+      });
+    }
+    res.status(200).send({ indicateursDecisions });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
