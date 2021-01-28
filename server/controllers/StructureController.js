@@ -29,7 +29,7 @@ exports.communes = async (req, res) => {
 };
 
 // Tableau 1: Situation  des CTD selon qu'elles disposent  ou non d'un PCD
-exports.commune_with_pcd = async (req, res) => {
+exports.table1 = async (req, res) => {
   try {
     const with_pcd = await Structure.findAndCountAll({
       where: {

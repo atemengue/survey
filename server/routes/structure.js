@@ -2,7 +2,7 @@
 
 const {
   create_commune,
-  commune_with_pcd,
+  table1,
   table3,
   table2,
   table4,
@@ -17,7 +17,7 @@ const {
 module.exports = (app) => {
   app.post('/api/structures', create_commune);
   app.get('/api/structures', communes);
-  app.get('/api/structures/pcd', commune_with_pcd);
+  app.get('/api/structures/table1', table1);
   app.get('/api/structures/table2', table2);
   app.get('/api/structures/table3', table3);
   app.get('/api/structures/table4', table4);

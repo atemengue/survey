@@ -194,6 +194,8 @@ const Content = (props) => {
       .then((data) => {
         setLoading(false);
         toast.success('Commune Ajoutee');
+        props.history.push('/temp');
+        props.history.goBack();
       })
       .catch((error) => {
         setLoading(false);

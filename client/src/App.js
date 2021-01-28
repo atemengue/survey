@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Acceuil from './components/Acceuil';
+import Footer from './components/Footer';
 import Formulaire from './components/Formulaire';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
@@ -20,6 +21,7 @@ function App() {
       </Switch>
       <ToastContainer />
       <ScrollToTop />
+      <Footer />
     </div>
   );
 }
