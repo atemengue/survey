@@ -2,7 +2,13 @@
 
 import React, { useState } from 'react';
 import Quiz from './Quiz';
-import { quizSection2, quizSection3, quizSection4 } from './QuizData';
+import {
+  degres,
+  quizSection2,
+  quizSection3,
+  quizSection4,
+  quizSection5,
+} from './QuizData';
 import Section from './Section';
 
 const Content = () => {
@@ -28,7 +34,7 @@ const Content = () => {
         status: false,
         degre: null,
       },
-      dimesionLegitime: {
+      dimensionLegitime: {
         status: false,
         degre: null,
       },
@@ -40,6 +46,7 @@ const Content = () => {
         intitule: null,
         status: false,
         degre: null,
+        autreDegre: '',
       },
     },
     facteurSuccessIndicateurPerformance: {
@@ -48,18 +55,19 @@ const Content = () => {
       satisfactionUsagers: null,
       rolePourperformance: null,
       imageMarqueCommune: null,
-      comportementEmployeCommunaux: 5,
+      comportementEmployeCommunaux: null,
       adaptabiliteProcessus: null,
       savoirsEtsavoirFaire: null,
-      efficaciteProcessus: 4,
+      efficaciteProcessus: null,
       maîtriseFluxInformation: null,
-      EfficaciteInfrastructures: null,
+      efficaciteInfrastructures: null,
       investissementsCommerciaux: null,
       adaptabiliteInfrastructures: null,
       productiviteEmployes: null,
       satisfactionEmployes: null,
       nombreProjetsExecute: null,
       acquisitionNouveauxServices: null,
+      investissementRechercheDeveloppement: null,
       valeurPartenarialePassee: null,
       valeurPartenarialefuture: null,
       investissementsEnFormation: null,
@@ -145,24 +153,53 @@ const Content = () => {
     },
   });
 
+  const onChangeValue = ({ name, value }, parent) => {
+    console.log(value);
+    console.log(parent);
+    console.log(name);
+    switch (parent) {
+      case 'dimensionStrategique':
+        setCommune({
+          ...commune,
+          [parent]: {
+            ...commune.dimensionStrategique,
+            [name]: {
+              ...commune.dimensionStrategique[name],
+              degre: value,
+            },
+          },
+        });
+        break;
+      default:
+        setCommune({
+          ...commune,
+          [parent]: {
+            ...commune.facteurSuccessIndicateurPerformance,
+            [name]: value,
+          },
+        });
+        return 0;
+    }
+  };
+
   return (
     <div style={{ marginTop: '100px', marginBottom: '100px' }}>
-      {console.log(commune.dimensionStrategique)}
+      {console.log(commune.indicateursDePerformanceDegreImportance)}
       <form>
         <div className='section container' id='section1'>
           <h4>SECTION 1: INFORMATIONS GENERALES</h4>
-          <div class='form-group row'>
-            <label for='nomStructure' class='col-sm-2 col-form-label'>
+          <div className='form-group row'>
+            <label htmlFor='nomStructure' className='col-sm-2 col-form-label'>
               <span>S1QO1: </span>
               Commune:
             </label>
-            <div class='col-sm-10'>
+            <div className='col-sm-10'>
               <input
                 required
                 value={commune.nomStructure}
                 name='nomStructure'
                 type='type'
-                class='form-control'
+                className='form-control'
                 id='nomStructure'
                 placeholder='Nom de votre commune'
                 onChange={(value) =>
@@ -175,30 +212,30 @@ const Content = () => {
         <hr />
         <div className='section container'>
           <h4>SECTION 2: DIMENSIONS STRATEGIQUES DE LA PERFORMANCE</h4>
-          <div class='form-group'>
-            <label for='inputPassword' class='col-form-label'>
+          <div className='form-group'>
+            <label htmlFor='' className='col-form-label'>
               <span>S2QO1: </span>
               Existe-t-il un système de planification et d’évaluation dans votre
               commune (PCD) ?
             </label>
-            <div class='col-sm-12'>
-              <div class='custom-control custom-radio custom-control-inline'>
+            <div className='col-sm-12'>
+              <div className='custom-control custom-radio custom-control-inline'>
                 <input
                   type='radio'
                   id='pcdExist1'
                   value={true}
                   name='pcdExist'
-                  class='custom-control-input'
+                  className='custom-control-input'
                   required
                   onChange={(value) =>
-                    setCommune({ ...commune, pcdExist: value.target.value })
+                    setCommune({ ...commune, pcdExist: true })
                   }
                 />
-                <label class='custom-control-label' for='pcdExist1'>
+                <label className='custom-control-label' htmlFor='pcdExist1'>
                   OUI
                 </label>
               </div>
-              <div class='custom-control custom-radio custom-control-inline'>
+              <div className='custom-control custom-radio custom-control-inline'>
                 <input
                   required
                   value={false}
@@ -206,24 +243,24 @@ const Content = () => {
                   id='pcdExist2'
                   name='pcdExist'
                   onChange={(value) =>
-                    setCommune({ ...commune, pcdExist: value.target.value })
+                    setCommune({ ...commune, pcdExist: false })
                   }
-                  class='custom-control-input'
+                  className='custom-control-input'
                 />
-                <label class='custom-control-label' for='pcdExist2'>
+                <label className='custom-control-label' htmlFor='pcdExist2'>
                   NON
                 </label>
               </div>
             </div>
           </div>
-          <div class='form-group'>
-            <label for='inputPassword' class='col-form-label'>
+          <div className='form-group'>
+            <label htmlFor='inputPassword' className='col-form-label'>
               <span>S2Q02: </span>
               Parmi les dimensions de la performance suivantes quelles sont
               celles qui sont susceptibles d’affecter l’évaluation de la
               performance de votre commune (par ordre d’importance) ?
             </label>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -237,16 +274,16 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionUsagers'
               />
-              <label class='form-check-label' for='dimensionUsagers'>
+              <label className='form-check-label' htmlFor='dimensionUsagers'>
                 {' '}
                 1. Dimension usagers
               </label>
             </div>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -260,16 +297,16 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionFinanciere'
               />
-              <label class='form-check-label' for='dimensionFinanciere'>
+              <label className='form-check-label' htmlFor='dimensionFinanciere'>
                 {' '}
                 2. Dimension financière
               </label>
             </div>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -283,16 +320,16 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionHumaine'
               />
-              <label class='form-check-label' for='dimensionHumaine'>
+              <label className='form-check-label' htmlFor='dimensionHumaine'>
                 {' '}
                 3. Dimension humaine
               </label>
             </div>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -306,16 +343,16 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionInterne'
               />
-              <label class='form-check-label' for='dimensionInterne'>
+              <label className='form-check-label' htmlFor='dimensionInterne'>
                 {' '}
                 4. Dimension interne
               </label>
             </div>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -329,17 +366,17 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionLegitime'
               />
-              <label class='form-check-label' for='dimensionLegitime'>
+              <label className='form-check-label' htmlFor='dimensionLegitime'>
                 {' '}
                 5. Dimension légitimité de la commune auprès des groupes
                 externes
               </label>
             </div>
-            <div class='form-check'>
+            <div className='form-check'>
               <input
                 onChange={(value) =>
                   setCommune({
@@ -354,17 +391,20 @@ const Content = () => {
                     },
                   })
                 }
-                class='form-check-input'
+                className='form-check-input'
                 type='checkbox'
                 id='dimensionGouvernanceLocale'
               />
-              <label class='form-check-label' for='dimensionGouvernanceLocale'>
+              <label
+                className='form-check-label'
+                htmlFor='dimensionGouvernanceLocale'
+              >
                 {' '}
                 6. Dimension gouvernance locale
               </label>
             </div>
-            <div class='form-group'>
-              <div class='form-check'>
+            <div className='form-group'>
+              <div className='form-check'>
                 <input
                   onChange={(value) =>
                     setCommune({
@@ -378,18 +418,18 @@ const Content = () => {
                       },
                     })
                   }
-                  class='form-check-input'
+                  className='form-check-input'
                   type='checkbox'
                   id='autre'
                 />
-                <label class='form-check-label' for='autre'>
+                <label className='form-check-label' htmlFor='autre'>
                   {' '}
                   7. Autres (A preciser)
                 </label>
               </div>
               {commune.dimensionStrategique.autre.status && (
                 <textarea
-                  class='form-control'
+                  className='form-control'
                   id='exampleFormControlTextarea1'
                   rows='3'
                   onChange={(value) =>
@@ -409,51 +449,81 @@ const Content = () => {
             </div>
           </div>
 
-          <div class='form-group'>
-            <label for='inputPassword' class='col-form-label'>
+          <div className='form-group'>
+            <label htmlFor='inputPassword' className='col-form-label'>
               <span>S2Q03 :</span>
               Selon vous le Plan communal de développement est considérée comme
               une vision stratégique dans votre commune ?{' '}
             </label>
-            <div class='col-sm-12'>
-              <div class='custom-control custom-radio custom-control-inline'>
+            <div className='col-sm-12'>
+              <div className='custom-control custom-radio custom-control-inline'>
                 <input
+                  value={true}
                   type='radio'
-                  id='customRadioInline1'
-                  name='customRadioInline'
-                  class='custom-control-input'
+                  id='visionStrategique1'
+                  name='visionStrategique'
+                  className='custom-control-input'
+                  onChange={(value) =>
+                    setCommune({
+                      ...commune,
+                      visionStrategique: true,
+                    })
+                  }
                 />
-                <label class='custom-control-label' for='customRadioInline1'>
+                <label
+                  className='custom-control-label'
+                  htmlFor='visionStrategique1'
+                >
                   OUI
                 </label>
               </div>
-              <div class='custom-control custom-radio custom-control-inline'>
+              <div className='custom-control custom-radio custom-control-inline'>
                 <input
+                  value={false}
                   type='radio'
-                  id='customRadioInline2'
-                  name='customRadioInline'
-                  class='custom-control-input'
+                  id='visionStrategique2'
+                  name='visionStrategique'
+                  className='custom-control-input'
+                  onChange={(value) =>
+                    setCommune({
+                      ...commune,
+                      visionStrategique: false,
+                    })
+                  }
                 />
-                <label class='custom-control-label' for='customRadioInline2'>
+                <label
+                  className='custom-control-label'
+                  htmlFor='visionStrategique2'
+                >
                   NON
                 </label>
               </div>
             </div>
           </div>
-          <div class='form-group'>
-            <label for='inputPassword' class='col-form-label'>
-              <span>S2Q04: </span>
-              Si non, quel est le document qui est considéré comme une vision
-              stratégique dans votre commune ?
-            </label>
-            <textarea
-              class='form-control'
-              id='exampleFormControlTextarea1'
-              rows='3'
-            ></textarea>
-          </div>
-          <div class='form-group'>
+          {!commune.visionStrategique && (
+            <div className='form-group'>
+              <label htmlFor='inputPassword' className='col-form-label'>
+                <span>S2Q04: </span>
+                Si non, quel est le document qui est considéré comme une vision
+                stratégique dans votre commune ?
+              </label>
+              <textarea
+                className='form-control'
+                id='exampleFormControlTextarea1'
+                rows='3'
+                onChange={(value) => {
+                  setCommune({
+                    ...commune,
+                    autreDocument: value.target.value,
+                  });
+                }}
+              ></textarea>
+            </div>
+          )}
+          <div className='form-group'>
             <Quiz
+              onChangeValue={onChangeValue}
+              degres={degres}
               questions={quizSection2}
               section='2'
               number='5'
@@ -468,7 +538,9 @@ const Content = () => {
           title='FACTEURS CLES DE SUCCES DES INDICATEURS DE PERFORMANCE'
         >
           <Quiz
+            degres={degres}
             questions={quizSection3}
+            onChangeValue={onChangeValue}
             section={3}
             number={1}
             title=' Parmi les indicateurs suivants, indiquez le degré d’importance que votre commune accorde a chaque indicateur? (Cocher la bonne réponse parmi celles proposées)'
@@ -477,21 +549,25 @@ const Content = () => {
         <hr />
         <Section number={4} title='SECTION 4 : INDICATEURS DE PERFORMANCES'>
           <Quiz
+            degres={degres}
             questions={quizSection4}
+            onChangeValue={onChangeValue}
             section={4}
             number={1}
             title="Parmi les indicateurs suivants, indiquez le degré d'importance que votre commune devrait accorder a chaque indicateur pour évaluer la performance communale. (Cocher la bonne réponse parmi celles proposées)."
           />
           <Quiz
-            questions={quizSection4}
+            degres={degres}
+            onChangeValue={onChangeValue}
+            questions={quizSection5}
             section={4}
             number={2}
             title='Parmi les indicateurs suivants, indiquez ceux qui sont le plus communiqués aux  maires et aux cadres supérieurs pour la prise des décisions? (Cocher la bonne réponse parmi les six proposées)'
           />
         </Section>
         <div className='container mb-4'>
-          <button type='button' class='btn btn-secondary'>
-            Enregistrer
+          <button type='submit' className='btn btn-success'>
+            Enregistrer les infotrmations
           </button>
         </div>
       </form>
