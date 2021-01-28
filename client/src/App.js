@@ -1,14 +1,24 @@
 /** @format */
 
-import Content from './components/Content';
+import { Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Acceuil from './components/Acceuil';
+import Formulaire from './components/Formulaire';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
+import Statistique from './components/Statistique';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <Content />
+      <Switch>
+        <Route path='/formulaires' component={Formulaire} />
+        <Route path='/statistiques' component={Statistique} />
+        <Route path='/' component={Acceuil} />
+      </Switch>
+      <ToastContainer />
       <ScrollToTop />
     </div>
   );

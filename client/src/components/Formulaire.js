@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import Quiz from './Quiz';
 import {
   degres,
@@ -11,7 +12,8 @@ import {
 } from './QuizData';
 import Section from './Section';
 
-const Content = () => {
+const Content = (props) => {
+  const [loading, setLoading] = useState(false);
   const [commune, setCommune] = useState({
     nomStructure: '',
     pcdExist: false,
@@ -154,9 +156,6 @@ const Content = () => {
   });
 
   const onChangeValue = ({ name, value }, parent) => {
-    console.log(value);
-    console.log(parent);
-    console.log(name);
     switch (parent) {
       case 'dimensionStrategique':
         setCommune({
@@ -182,10 +181,29 @@ const Content = () => {
     }
   };
 
+  const onSave = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    fetch('http://localhost:3000/api/structures', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(commune),
+    })
+      .then((data) => {
+        setLoading(false);
+        toast.success('Commune Ajoutee');
+      })
+      .catch((error) => {
+        setLoading(false);
+        toast.success('Erreur verifier les champs');
+      });
+  };
+
   return (
     <div style={{ marginTop: '100px', marginBottom: '100px' }}>
-      {console.log(commune.indicateursDePerformanceDegreImportance)}
-      <form>
+      <form method='POST' onSubmit={onSave} className='mb-5'>
         <div className='section container' id='section1'>
           <h4>SECTION 1: INFORMATIONS GENERALES</h4>
           <div className='form-group row'>
@@ -565,10 +583,17 @@ const Content = () => {
             title='Parmi les indicateurs suivants, indiquez ceux qui sont le plus communiqués aux  maires et aux cadres supérieurs pour la prise des décisions? (Cocher la bonne réponse parmi les six proposées)'
           />
         </Section>
+
         <div className='container mb-4'>
-          <button type='submit' className='btn btn-success'>
-            Enregistrer les infotrmations
-          </button>
+          {loading ? (
+            <div class='spinner-border' role='status'>
+              <span class='sr-only'>Loading...</span>
+            </div>
+          ) : (
+            <button type='submit' className='btn btn-success'>
+              Enregistrer les informations
+            </button>
+          )}
         </div>
       </form>
     </div>

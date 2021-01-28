@@ -8,7 +8,9 @@ exports.create_commune = async (req, res) => {
   try {
     const commune = await Structure.create(data);
     commune
-      ? res.status(200).send(commune)
+      ? setTimeout(() => {
+          res.status(200).send(commune);
+        }, 3000)
       : res.status(401).send({
           error: 'Error',
         });

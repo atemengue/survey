@@ -37,14 +37,14 @@ function Quiz({ section, number, title, questions, degres, onChangeValue }) {
                         className='form-check-input'
                         type='radio'
                         name={question.name}
-                        id={question.name + degre.title}
+                        id={question.name + question.parent}
                         onChange={(value) =>
                           onHandlerValue(value.target, question.parent)
                         }
                       />
                       <label
                         className='form-check-label'
-                        htmlFor={question.name + degre.title}
+                        htmlFor={question.name + question.parent}
                       >
                         {degre.title}
                       </label>

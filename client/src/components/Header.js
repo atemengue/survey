@@ -1,11 +1,16 @@
 /** @format */
 
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const activeStyle = { color: '#F15B2A' };
+
   return (
     <nav className='navbar fixed-top navbar-expand-lg navbar-dark bg-dark mb-1'>
-      <a className='navbar-brand'>Acceuil</a>
+      <NavLink exact activeStyle={activeStyle} className='nav-link' to='/'>
+        Acceuil
+      </NavLink>
       <button
         className='navbar-toggler'
         type='button'
@@ -21,15 +26,22 @@ const Header = () => {
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item'>
-            <a className='nav-link'>
+            <NavLink
+              activeStyle={activeStyle}
+              to='formulaires'
+              className='nav-link'
+            >
               Formulaire <span className='sr-only'>(current)</span>
-            </a>
+            </NavLink>
           </li>
           <li className='nav-item'>
-            <a className='nav-link'>Statistiques</a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link'>Les communes</a>
+            <NavLink
+              activeStyle={activeStyle}
+              to='statistiques'
+              className='nav-link'
+            >
+              Statistiques
+            </NavLink>
           </li>
         </ul>
       </div>

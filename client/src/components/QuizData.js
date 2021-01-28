@@ -372,167 +372,167 @@ export const quizSection4 = [
 export const quizSection5 = [
   {
     title: 'Satisfaction des usagers',
-    name: 'satisfactioDesUsagers',
+    name: 'satisfactioDesUsagers1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Exécution des services et infrastructures',
-    name: 'executionServicesInfrastructures',
+    name: 'executionServicesInfrastructures1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Etat de maintenance des infrastructures',
-    name: 'etatDeMaintenancesInfrastructures',
+    name: 'etatDeMaintenancesInfrastructures1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title:
       'Qualité des produits (ouvrages, infrastructures, etc..) et services',
-    name: 'qualiteDesProduitsEtservices',
+    name: 'qualiteDesProduitsEtservices1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Image de marque',
-    name: 'imageDeMarque',
+    name: 'imageDeMarque1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title:
       'Investissements commerciaux (marchés, magasins de stockage, cercles municipaux, etc…..)',
-    name: 'investissementCommerciaux',
+    name: 'investissementCommerciaux1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title:
       'Valeur (création de la richesse) future pour les partenaires de la commune',
-    name: 'valeurFuturePourLesPartenairesDeLaCommune',
+    name: 'valeurFuturePourLesPartenairesDeLaCommune1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Recouvrement des recettes',
-    name: 'recouvrementRecettes',
+    name: 'recouvrementRecettes1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Maitrise des couts',
-    name: 'maitriseDesCouts',
+    name: 'maitriseDesCouts1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Valeur dégagée pour les conseillers municipaux',
-    name: 'valeurDegageePourLesConseillersMunicipaux',
+    name: 'valeurDegageePourLesConseillersMunicipaux1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Valeur dégagée pour les partenaires de la commune',
-    name: 'valeurDegageePourLesPartenairesDeLaCommune',
+    name: 'valeurDegageePourLesPartenairesDeLaCommune1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Productivité individuelle',
-    name: 'productiviteIndividuelle',
+    name: 'productiviteIndividuelle1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Satisfaction des employés',
-    name: 'satisfactionDesEmployes',
+    name: 'satisfactionDesEmployes1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title:
       'Influence des compétences sur la performance (valeur des compétences)',
-    name: 'influenceDesCompetences',
+    name: 'influenceDesCompetences1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Savoirs et savoir-faire',
-    name: 'savoirsEtsavoirFaire',
+    name: 'savoirsEtsavoirFaire1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Formations stratégiques',
-    name: 'formationStratégique',
+    name: 'formationStratégique1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Comportement des employés',
-    name: 'comportementdesEmployes',
+    name: 'comportementdesEmployes1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Capacités d’innovation',
-    name: 'capacitesInnovation',
+    name: 'capacitesInnovation1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Efficacité des processus (production, innovation...)',
-    name: 'efficaciteProcessus',
+    name: 'efficaciteProcessus1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Efficacité des infrastructures',
-    name: 'efficacitedesInfrastructures',
+    name: 'efficacitedesInfrastructures1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Investissements en R et D',
-    name: 'investissementsEnREtD',
+    name: 'investissementsEnREtD1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Adaptabilité des processus',
-    name: 'adaptabiliteDesProcessus',
+    name: 'adaptabiliteDesProcessus1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Adaptabilité des infrastructures',
-    name: 'adaptabiliteDesInfrastructures',
+    name: 'adaptabiliteDesInfrastructures1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Maîtrise des flux d’information',
-    name: 'maitrisefluxInformation',
+    name: 'maitrisefluxInformation1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Satisfaction des bailleurs de fonds',
-    name: 'satisfactionBailleursFonds',
+    name: 'satisfactionBailleursFonds1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Satisfaction des organismes régulateurs',
-    name: 'satisfactionorganismesRegulateurs',
+    name: 'satisfactionorganismesRegulateurs1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Satisfaction de la communauté',
-    name: 'satisfactionDelacommunaute',
+    name: 'satisfactionDelacommunaute1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Influence des communautés',
-    name: 'influenceDesCommunautes',
+    name: 'influenceDesCommunautes1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Comptes administratif, de gestion et de gestion matières',
-    name: 'comptesAdministratifGestionEtGestionMatieres',
+    name: 'comptesAdministratifGestionEtGestionMatieres1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Nombre de partenariats public / privé',
-    name: 'nombrepartenariatspublicPrive',
+    name: 'nombrepartenariatspublicPrive1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title: 'Implication des comités de quartiers et des villages',
-    name: 'implicationComitesQuartiersEtVillages ',
+    name: 'implicationComitesQuartiersEtVillages 1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
     title:
       'Adaptabilité des progiciels de gestion des données (Pro_ADP et SIM_ba)',
-    name: 'adaptabiliteProgicielsGestionDonnees',
+    name: 'adaptabiliteProgicielsGestionDonnees1',
     parent: 'indicateursDePerformancePriseDecision',
   },
 ];
