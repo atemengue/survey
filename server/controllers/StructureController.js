@@ -144,44 +144,45 @@ exports.table6 = async (req, res) => {
       raw: true,
     });
 
-    const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
-    const dimensionStrategiques = {};
+    const degres = ['peu', 'moins', 'neutre', 'important', 'assez', 'tres'];
+    const dimensionStrategique = {};
     if (communes) {
       const keys = Object.keys(communes[0].dimensionStrategique);
       for (const key of keys) {
-        dimensionStrategiques[key] = {};
+        dimensionStrategique[key] = {};
         for (degre of degres) {
-          dimensionStrategiques[key][degre] = 0;
+          dimensionStrategique[key][degre] = 0;
         }
       }
       communes.map((commune) => {
         keys.map((valueKey) => {
+          console.log(valueKey);
           switch (commune.dimensionStrategique[valueKey].degre) {
-            case 1:
-              dimensionStrategiques[valueKey][degres[5]] =
-                (dimensionStrategiques[valueKey][degres[5]] || 0) + 1;
+            case '1':
+              dimensionStrategique[valueKey][degres[0]] =
+                (dimensionStrategique[valueKey][degres[0]] || 0) + 1;
               break;
 
-            case 2:
-              dimensionStrategiques[valueKey][degres[4]] =
-                (dimensionStrategiques[valueKey][degres[4]] || 0) + 1;
+            case '2':
+              dimensionStrategique[valueKey][degres[1]] =
+                (dimensionStrategique[valueKey][degres[1]] || 0) + 1;
               break;
 
-            case 3:
-              dimensionStrategiques[valueKey][degres[3]] =
-                (dimensionStrategiques[valueKey][degres[3]] || 0) + 1;
+            case '3':
+              dimensionStrategique[valueKey][degres[2]] =
+                (dimensionStrategique[valueKey][degres[2]] || 0) + 1;
               break;
-            case 4:
-              dimensionStrategiques[valueKey][degres[2]] =
-                (dimensionStrategiques[valueKey][degres[2]] || 0) + 1;
+            case '4':
+              dimensionStrategique[valueKey][degres[3]] =
+                (dimensionStrategique[valueKey][degres[3]] || 0) + 1;
               break;
-            case 5:
-              dimensionStrategiques[valueKey][degres[1]] =
-                (dimensionStrategiques[valueKey][degres[1]] || 0) + 1;
+            case '5':
+              dimensionStrategique[valueKey][degres[4]] =
+                (dimensionStrategique[valueKey][degres[4]] || 0) + 1;
               break;
-            case 6:
-              dimensionStrategiques[valueKey][degres[0]] =
-                (dimensionStrategiques[valueKey][degres[0]] || 0) + 1;
+            case '6':
+              dimensionStrategique[valueKey][degres[5]] =
+                (dimensionStrategique[valueKey][degres[5]] || 0) + 1;
               break;
 
             default:
@@ -190,7 +191,7 @@ exports.table6 = async (req, res) => {
         });
       });
     }
-    res.status(200).send({ dimensionStrategiques });
+    res.status(200).send({ dimensionStrategique });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
@@ -205,44 +206,49 @@ exports.table7 = async (req, res) => {
       raw: true,
     });
 
-    const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
-    const successFactors = {};
+    const degres = ['peu', 'moins', 'neutre', 'important', 'assez', 'tres'];
+
+    const facteurSuccessIndicateurPerformance = {};
     if (communes) {
       const keys = Object.keys(communes[0].facteurSuccessIndicateurPerformance);
       for (const key of keys) {
-        successFactors[key] = {};
+        facteurSuccessIndicateurPerformance[key] = {};
         for (degre of degres) {
-          successFactors[key][degre] = 0;
+          facteurSuccessIndicateurPerformance[key][degre] = 0;
         }
       }
       communes.map((commune) => {
         keys.map((valueKey) => {
           switch (commune.facteurSuccessIndicateurPerformance[valueKey]) {
-            case 1:
-              successFactors[valueKey][degres[5]] =
-                (successFactors[valueKey][degres[5]] || 0) + 1;
+            case '1':
+              facteurSuccessIndicateurPerformance[valueKey][degres[0]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[0]] ||
+                  0) + 1;
               break;
-
-            case 2:
-              successFactors[valueKey][degres[4]] =
-                (successFactors[valueKey][degres[4]] || 0) + 1;
+            case '2':
+              facteurSuccessIndicateurPerformance[valueKey][degres[1]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[1]] ||
+                  0) + 1;
               break;
-
-            case 3:
-              successFactors[valueKey][degres[3]] =
-                (successFactors[valueKey][degres[3]] || 0) + 1;
+            case '3':
+              facteurSuccessIndicateurPerformance[valueKey][degres[2]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[2]] ||
+                  0) + 1;
               break;
-            case 4:
-              successFactors[valueKey][degres[2]] =
-                (successFactors[valueKey][degres[2]] || 0) + 1;
+            case '4':
+              facteurSuccessIndicateurPerformance[valueKey][degres[3]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[3]] ||
+                  0) + 1;
               break;
-            case 5:
-              successFactors[valueKey][degres[1]] =
-                (successFactors[valueKey][degres[1]] || 0) + 1;
+            case '5':
+              facteurSuccessIndicateurPerformance[valueKey][degres[4]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[4]] ||
+                  0) + 1;
               break;
-            case 6:
-              successFactors[valueKey][degres[0]] =
-                (successFactors[valueKey][degres[0]] || 0) + 1;
+            case '6':
+              facteurSuccessIndicateurPerformance[valueKey][degres[5]] =
+                (facteurSuccessIndicateurPerformance[valueKey][degres[5]] ||
+                  0) + 1;
               break;
 
             default:
@@ -251,7 +257,7 @@ exports.table7 = async (req, res) => {
         });
       });
     }
-    res.status(200).send({ successFactors });
+    res.status(200).send({ facteurSuccessIndicateurPerformance });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });
@@ -267,45 +273,51 @@ exports.table8 = async (req, res) => {
     });
 
     const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
-    const indicateursImportance = {};
+    const indicateursDePerformanceDegreImportance = {};
     if (communes) {
       const keys = Object.keys(
         communes[0].indicateursDePerformanceDegreImportance
       );
       for (const key of keys) {
-        indicateursImportance[key] = {};
+        indicateursDePerformanceDegreImportance[key] = {};
         for (degre of degres) {
-          indicateursImportance[key][degre] = 0;
+          indicateursDePerformanceDegreImportance[key][degre] = 0;
         }
       }
       communes.map((commune) => {
         keys.map((valueKey) => {
           switch (commune.indicateursDePerformanceDegreImportance[valueKey]) {
-            case 1:
-              indicateursImportance[valueKey][degres[5]] =
-                (indicateursImportance[valueKey][degres[5]] || 0) + 1;
+            case '1':
+              indicateursDePerformanceDegreImportance[valueKey][degres[0]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[0]] ||
+                  0) + 1;
               break;
 
-            case 2:
-              indicateursImportance[valueKey][degres[4]] =
-                (indicateursImportance[valueKey][degres[4]] || 0) + 1;
+            case '2':
+              indicateursDePerformanceDegreImportance[valueKey][degres[1]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[1]] ||
+                  0) + 1;
               break;
 
-            case 3:
-              indicateursImportance[valueKey][degres[3]] =
-                (indicateursImportance[valueKey][degres[3]] || 0) + 1;
+            case '3':
+              indicateursDePerformanceDegreImportance[valueKey][degres[2]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[2]] ||
+                  0) + 1;
               break;
-            case 4:
-              indicateursImportance[valueKey][degres[2]] =
-                (indicateursImportance[valueKey][degres[2]] || 0) + 1;
+            case '4':
+              indicateursDePerformanceDegreImportance[valueKey][degres[3]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[3]] ||
+                  0) + 1;
               break;
-            case 5:
-              indicateursImportance[valueKey][degres[1]] =
-                (indicateursImportance[valueKey][degres[1]] || 0) + 1;
+            case '5':
+              indicateursDePerformanceDegreImportance[valueKey][degres[4]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[4]] ||
+                  0) + 1;
               break;
-            case 6:
-              indicateursImportance[valueKey][degres[0]] =
-                (indicateursImportance[valueKey][degres[0]] || 0) + 1;
+            case '6':
+              indicateursDePerformanceDegreImportance[valueKey][degres[5]] =
+                (indicateursDePerformanceDegreImportance[valueKey][degres[5]] ||
+                  0) + 1;
               break;
 
             default:
@@ -314,7 +326,7 @@ exports.table8 = async (req, res) => {
         });
       });
     }
-    res.status(200).send({ indicateursImportance });
+    res.status(200).send({ indicateursDePerformanceDegreImportance });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });

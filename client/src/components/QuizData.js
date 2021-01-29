@@ -145,7 +145,7 @@ export const quizSection3 = [
   },
   {
     title: '   Gestion coûts (infrastructures, véhicules,  ordinateurs, etc….)',
-    name: 'gestioncCouts',
+    name: 'gestionCouts',
     parent: 'facteurSuccessIndicateurPerformance',
   },
   {
@@ -204,7 +204,7 @@ export const quizSection3 = [
 export const quizSection4 = [
   {
     title: 'Satisfaction des usagers',
-    name: 'satisfactioDesUsagers',
+    name: 'satisfactionUsagers',
     parent: 'indicateursDePerformanceDegreImportance',
   },
   {
@@ -541,26 +541,32 @@ export const degres = [
   {
     title: 'Peu important',
     value: 1,
+    name: 'peu',
   },
   {
     title: 'Moins important',
     value: 2,
+    name: 'moins',
   },
   {
     title: 'Neutre',
     value: 3,
+    name: 'neutre',
   },
   {
     title: 'important',
     value: 4,
+    name: 'important',
   },
   {
     title: 'Assez important',
     value: 5,
+    name: 'assez',
   },
 
   {
     title: 'Tres important',
     value: 6,
+    name: 'tres',
   },
 ];
