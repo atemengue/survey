@@ -272,7 +272,8 @@ exports.table8 = async (req, res) => {
       raw: true,
     });
 
-    const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
+    const degres = ['peu', 'moins', 'neutre', 'important', 'assez', 'tres'];
+
     const indicateursDePerformanceDegreImportance = {};
     if (communes) {
       const keys = Object.keys(
@@ -340,45 +341,51 @@ exports.table9 = async (req, res) => {
     });
 
     const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
-    const indicateursDecisions = {};
+    const indicateursDePerformancePriseDecision = {};
     if (communes) {
       const keys = Object.keys(
         communes[0].indicateursDePerformancePriseDecision
       );
       for (const key of keys) {
-        indicateursDecisions[key] = {};
+        indicateursDePerformancePriseDecision[key] = {};
         for (degre of degres) {
-          indicateursDecisions[key][degre] = 0;
+          indicateursDePerformancePriseDecision[key][degre] = 0;
         }
       }
       communes.map((commune) => {
         keys.map((valueKey) => {
           switch (commune.indicateursDePerformancePriseDecision[valueKey]) {
-            case 1:
-              indicateursDecisions[valueKey][degres[5]] =
-                (indicateursDecisions[valueKey][degres[5]] || 0) + 1;
+            case '1':
+              indicateursDePerformancePriseDecision[valueKey][degres[0]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[0]] ||
+                  0) + 1;
               break;
 
-            case 2:
-              indicateursDecisions[valueKey][degres[4]] =
-                (indicateursDecisions[valueKey][degres[4]] || 0) + 1;
+            case '2':
+              indicateursDePerformancePriseDecision[valueKey][degres[1]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[1]] ||
+                  0) + 1;
               break;
 
-            case 3:
-              indicateursDecisions[valueKey][degres[3]] =
-                (indicateursDecisions[valueKey][degres[3]] || 0) + 1;
+            case '3':
+              indicateursDePerformancePriseDecision[valueKey][degres[2]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[2]] ||
+                  0) + 1;
               break;
-            case 4:
-              indicateursDecisions[valueKey][degres[2]] =
-                (indicateursDecisions[valueKey][degres[2]] || 0) + 1;
+            case '4':
+              indicateursDePerformancePriseDecision[valueKey][degres[3]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[3]] ||
+                  0) + 1;
               break;
-            case 5:
-              indicateursDecisions[valueKey][degres[1]] =
-                (indicateursDecisions[valueKey][degres[1]] || 0) + 1;
+            case '5':
+              indicateursDePerformancePriseDecision[valueKey][degres[4]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[4]] ||
+                  0) + 1;
               break;
-            case 6:
-              indicateursDecisions[valueKey][degres[0]] =
-                (indicateursDecisions[valueKey][degres[0]] || 0) + 1;
+            case '6':
+              indicateursDePerformancePriseDecision[valueKey][degres[5]] =
+                (indicateursDePerformancePriseDecision[valueKey][degres[5]] ||
+                  0) + 1;
               break;
 
             default:
@@ -387,7 +394,7 @@ exports.table9 = async (req, res) => {
         });
       });
     }
-    res.status(200).send({ indicateursDecisions });
+    res.status(200).send({ indicateursDePerformancePriseDecision });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error });

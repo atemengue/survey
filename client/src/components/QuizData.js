@@ -267,7 +267,7 @@ export const quizSection4 = [
   },
   {
     title: 'Satisfaction des employés',
-    name: 'satisfactionDesEmployes',
+    name: 'satisfactionEmployes',
     parent: 'indicateursDePerformanceDegreImportance',
   },
   {
@@ -358,7 +358,7 @@ export const quizSection4 = [
   },
   {
     title: 'Implication des comités de quartiers et des villages',
-    name: 'implicationComitesQuartiersEtVillages ',
+    name: 'implicationComitesQuartiersEtVillages',
     parent: 'indicateursDePerformanceDegreImportance',
   },
   {
@@ -372,7 +372,7 @@ export const quizSection4 = [
 export const quizSection5 = [
   {
     title: 'Satisfaction des usagers',
-    name: 'satisfactioDesUsagers1',
+    name: 'satisfactionUsagers1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
@@ -435,7 +435,7 @@ export const quizSection5 = [
   },
   {
     title: 'Satisfaction des employés',
-    name: 'satisfactionDesEmployes1',
+    name: 'satisfactionEmployes1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {
@@ -526,7 +526,7 @@ export const quizSection5 = [
   },
   {
     title: 'Implication des comités de quartiers et des villages',
-    name: 'implicationComitesQuartiersEtVillages 1',
+    name: 'implicationComitesQuartiersEtVillages1',
     parent: 'indicateursDePerformancePriseDecision',
   },
   {

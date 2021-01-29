@@ -16,6 +16,7 @@ function Statistique() {
   const [table6, setTable6] = useState(null);
   const [table7, setTable7] = useState(null);
   const [table8, setTable8] = useState(null);
+  const [table9, setTable9] = useState(null);
 
   function sum(obj) {
     var sum = 0;
@@ -135,6 +136,24 @@ function Statistique() {
       });
   };
 
+  const fetchTable9 = () => {
+    fetch('http://localhost:3000/api/structures/table9', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setTable9(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     fetchTable1();
     fetchTable2();
@@ -142,11 +161,12 @@ function Statistique() {
     fetchTable6();
     fetchTable7();
     fetchTable8();
+    fetchTable9();
   }, []);
 
   return (
     <>
-      {console.log(table8)}
+      {console.log(table9)}
       <div className='container' style={{ marginTop: '100px' }}>
         <div>
           <h3>
@@ -614,7 +634,7 @@ function Statistique() {
                     {degres.map((degre, index) => {
                       if (table8) {
                         somme +=
-                          table7[question.parent][question.name][degre.name];
+                          table8[question.parent][question.name][degre.name];
                       }
                       return (
                         <td key={index}>
@@ -624,6 +644,7 @@ function Statistique() {
                         </td>
                       );
                     })}
+
                     <td>{somme}</td>
                   </tr>
                 );
@@ -666,13 +687,26 @@ function Statistique() {
             </thead>
             <tbody>
               {quizSection5.map((question, index) => {
+                let somme = 0;
                 return (
                   <tr>
                     <th scope='row'>{question.title}</th>
+
                     {degres.map((degre, index) => {
-                      return <td key={index}></td>;
+                      if (table9) {
+                        somme +=
+                          table9[question.parent][question.name][degre.name];
+                      }
+                      return (
+                        <td key={index}>
+                          {table9
+                            ? table9[question.parent][question.name][degre.name]
+                            : ''}
+                        </td>
+                      );
                     })}
-                    <td></td>
+
+                    <td>{somme}</td>
                   </tr>
                 );
               })}
