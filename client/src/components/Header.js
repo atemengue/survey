@@ -43,6 +43,15 @@ const Header = () => {
               Statistiques
             </NavLink>
           </li>
+          <li className='nav-item'>
+            <NavLink
+              activeStyle={activeStyle}
+              to='communes'
+              className='nav-link'
+            >
+              Communes
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
