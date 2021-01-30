@@ -529,6 +529,7 @@ const Content = (props) => {
                 stratégique dans votre commune ?
               </label>
               <textarea
+                required
                 className='form-control'
                 id='exampleFormControlTextarea1'
                 rows='3'

@@ -35,6 +35,7 @@ function Commune() {
           <tr>
             <th scope='col'>#</th>
             <th scope='col'>Noms</th>
+            <th scope='col'>Document de vision stratégique de la commmune</th>
             <th scope='col'>Actions</th>
           </tr>
         </thead>
@@ -44,6 +45,7 @@ function Commune() {
               <tr>
                 <th scope='row'>{++index}</th>
                 <td>{commune.nomStructure}</td>
+                <td>{commune.autreDocument}</td>
                 <td>
                   <button className='btn btn-danger'>Supprimer</button>
                 </td>

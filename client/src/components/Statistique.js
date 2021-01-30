@@ -13,10 +13,12 @@ function Statistique() {
   const [table1, setTable1] = useState({});
   const [table2, setTable2] = useState({});
   const [table3, setTable3] = useState({});
+  const [table4, setTable4] = useState({});
   const [table6, setTable6] = useState(null);
   const [table7, setTable7] = useState(null);
   const [table8, setTable8] = useState(null);
   const [table9, setTable9] = useState(null);
+  const [communes, setCommunes] = useState([]);
 
   function sum(obj) {
     var sum = 0;
@@ -28,145 +30,155 @@ function Statistique() {
     return sum;
   }
 
-  const fetchTable1 = () => {
-    fetch('http://localhost:3000/api/structures/table1', {
+  const fetchTable = (numero) => {
+    const options = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable1(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    };
 
-  const fetchTable2 = () => {
-    fetch('http://localhost:3000/api/structures/table2', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable2(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchTable3 = () => {
-    fetch('http://localhost:3000/api/structures/table3', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable3(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchTable6 = () => {
-    fetch('http://localhost:3000/api/structures/table6', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable6(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchTable7 = () => {
-    fetch('http://localhost:3000/api/structures/table7', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable7(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchTable8 = () => {
-    fetch('http://localhost:3000/api/structures/table8', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable8(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchTable9 = () => {
-    fetch('http://localhost:3000/api/structures/table9', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setTable9(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    switch (numero) {
+      case 1:
+        fetch('http://localhost:3000/api/structures/table1', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable1(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 2:
+        fetch('http://localhost:3000/api/structures/table2', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable2(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 3:
+        fetch('http://localhost:3000/api/structures/table3', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable3(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 4:
+        fetch('http://localhost:3000/api/structures/table4', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable4(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 5:
+        fetch('http://localhost:3000/api/structures/table5', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            // setTable5(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 6:
+        fetch('http://localhost:3000/api/structures/table6', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable6(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 7:
+        fetch('http://localhost:3000/api/structures/table7', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable7(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 8:
+        fetch('http://localhost:3000/api/structures/table8', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable8(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      case 9:
+        fetch('http://localhost:3000/api/structures/table9', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setTable9(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+      default:
+        fetch('http://localhost:3000/api/structures', options)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setCommunes(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        break;
+    }
   };
 
   useEffect(() => {
-    fetchTable1();
-    fetchTable2();
-    fetchTable3();
-    fetchTable6();
-    fetchTable7();
-    fetchTable8();
-    fetchTable9();
-  }, []);
+    fetchTable();
+    if (communes.length > 0) {
+      fetchTable(1);
+      fetchTable(2);
+      fetchTable(3);
+      fetchTable(4);
+      // fetchTable(1);
+      fetchTable(6);
+      fetchTable(7);
+      fetchTable(8);
+      fetchTable(9);
+    }
+  }, [communes.length]);
 
   return (
     <>
-      {console.log(table9)}
       <div className='container' style={{ marginTop: '100px' }}>
         <div>
           <h3>
@@ -254,7 +266,6 @@ function Statistique() {
                 <td>
                   {table2?.dimensionStrategiques?.dimensionGouvernanceLocale}
                 </td>
-                <td></td>
               </tr>
               <tr>
                 <th scope='row'>Autre (A préciser)</th>
@@ -269,7 +280,7 @@ function Statistique() {
       <div className='container'>
         <div>
           <h3>
-            Tableau 3: Réartition des CTD par dimension de performance
+            Tableau 3: Répartition des CTD par dimension de performance
             susceptibles d'affecter l'évaluation de la performance suivant
             qu'elle dispose d'un PCD
           </h3>
@@ -391,7 +402,10 @@ function Statistique() {
                 <th scope='row'>Ensemble</th>
                 <td>{sum(table3.dimensionStrategiques?.withPcd)}</td>
                 <td>{sum(table3.dimensionStrategiques?.withoutPcd)}</td>
-                <td></td>
+                <td>
+                  {sum(table3.dimensionStrategiques?.withPcd) +
+                    sum(table3.dimensionStrategiques?.withoutPcd)}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -416,9 +430,11 @@ function Statistique() {
             <tbody>
               <tr>
                 <th scope='row'>PCD outil Vision stratégique </th>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{table4.with_pcd_with_vision}</td>
+                <td>{table4.without_pcd_vision}</td>
+                <td>
+                  {table4.with_pcd_with_vision + table4.without_pcd_vision}
+                </td>
               </tr>
               <tr>
                 <th scope='row'>Autres outils de visions stratégiques </th>
@@ -440,7 +456,7 @@ function Statistique() {
       <div className='container'>
         <div>
           <h3>
-            Tableau 5: Répartition des CTD par outil de vision stratgique selon
+            Tableau 5: Répartition des CTD par outil de vision stratégique selon
             les dimensions pouvant affecter la performance
           </h3>
           <table className='table table-bordered'>
@@ -530,13 +546,20 @@ function Statistique() {
               })}
               <tr>
                 <th scope='row'>Ensemble</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                {degres.map((degre, index) => {
+                  if (table6) {
+                    return (
+                      <td key={index}>
+                        {table6['dimensionStrategique']['ensemble'][degre.name]}
+                      </td>
+                    );
+                  }
+                })}
+                <td>
+                  {table6
+                    ? sum(table6['dimensionStrategique']['ensemble'])
+                    : ''}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -591,13 +614,28 @@ function Statistique() {
               })}
               <tr>
                 <th scope='row'>Ensemble</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                {degres.map((degre, index) => {
+                  if (table7) {
+                    return (
+                      <td key={index}>
+                        {
+                          table7['facteurSuccessIndicateurPerformance'][
+                            'ensemble'
+                          ][degre.name]
+                        }
+                      </td>
+                    );
+                  }
+                })}
+                <td>
+                  {table7
+                    ? sum(
+                        table7['facteurSuccessIndicateurPerformance'][
+                          'ensemble'
+                        ]
+                      )
+                    : ''}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -651,13 +689,28 @@ function Statistique() {
               })}
               <tr>
                 <th scope='row'>Ensemble</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                {degres.map((degre, index) => {
+                  if (table8) {
+                    return (
+                      <td key={index}>
+                        {
+                          table8['indicateursDePerformanceDegreImportance'][
+                            'ensemble'
+                          ][degre.name]
+                        }
+                      </td>
+                    );
+                  }
+                })}
+                <td>
+                  {table8
+                    ? sum(
+                        table8['indicateursDePerformanceDegreImportance'][
+                          'ensemble'
+                        ]
+                      )
+                    : ''}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -712,13 +765,28 @@ function Statistique() {
               })}
               <tr>
                 <th scope='row'>Ensemble</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                {degres.map((degre, index) => {
+                  if (table9) {
+                    return (
+                      <td key={index}>
+                        {
+                          table9['indicateursDePerformancePriseDecision'][
+                            'ensemble'
+                          ][degre.name]
+                        }
+                      </td>
+                    );
+                  }
+                })}
+                <td>
+                  {table9
+                    ? sum(
+                        table9['indicateursDePerformancePriseDecision'][
+                          'ensemble'
+                        ]
+                      )
+                    : ''}
+                </td>
               </tr>
             </tbody>
           </table>
