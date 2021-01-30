@@ -559,3 +559,17 @@ exports.table9 = async (req, res) => {
     res.status(500).send({ error });
   }
 };
+
+exports.delete_structure = async (req, res) => {
+  const id = req.body.id;
+  try {
+    await Structure.destroy({
+      where: {
+        idStructure: id,
+      },
+    });
+    res.status(200).send({ id });
+  } catch (error) {
+    res.status(500).send({ error: error });
+  }
+};

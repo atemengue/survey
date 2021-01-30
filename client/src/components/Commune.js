@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Commune() {
   const [communes, setCommunes] = useState([]);
@@ -20,6 +21,30 @@ function Commune() {
       })
       .catch((error) => {
         console.log(error);
+        console.log(error);
+      });
+  };
+
+  const delete_structure = (id) => {
+    fetch('http://localhost:3000/api/structures', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: id }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setCommunes(
+          communes.filter((commune) => commune.idStructure === data.id)
+        );
+        toast.success('Commune supprime');
+        fetchCommunes();
+      })
+      .catch((error) => {
+        toast.error('Erreur de supprimer');
       });
   };
 
@@ -47,7 +72,12 @@ function Commune() {
                 <td>{commune.nomStructure}</td>
                 <td>{commune.autreDocument}</td>
                 <td>
-                  <button className='btn btn-danger'>Supprimer</button>
+                  <button
+                    onClick={() => delete_structure(commune.idStructure)}
+                    className='btn btn-danger'
+                  >
+                    Supprimer
+                  </button>
                 </td>
               </tr>
             );
