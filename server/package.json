@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "client": "cd ../client && npm run start",
+    "client": "cd client && npm run start",
     "server": "nodemon ./bin/www --ignore tests",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client:build": "cd client && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
