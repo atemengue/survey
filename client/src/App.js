@@ -1,5 +1,5 @@
 /** @format */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,8 +11,12 @@ import ScrollToTop from './components/ScrollToTop';
 import Statistique from './components/Statistique';
 import DB from './db';
 
-function App(props) {
+function App(pros) {
   const [db, setDb] = useState(new DB('survey'));
+
+  useEffect(() => {
+    db.createIndexes();
+  });
 
   return (
     <div className='App'>

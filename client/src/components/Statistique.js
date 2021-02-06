@@ -9,7 +9,7 @@ import {
   quizSection5,
 } from './QuizData';
 
-function Statistique() {
+function Statistique({ db }) {
   const [table1, setTable1] = useState({});
   const [table2, setTable2] = useState({});
   const [table3, setTable3] = useState({});
@@ -30,134 +30,46 @@ function Statistique() {
     return sum;
   }
 
-  const fetchTable = (numero) => {
-    const options = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
+  const fetchTable = async (numero) => {
     switch (numero) {
       case 1:
-        fetch('http://localhost:3000/api/structures/table1', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable1(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data = await db.table1();
+        setTable1(data);
         break;
       case 2:
-        fetch('http://localhost:3000/api/structures/table2', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable2(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data2 = await db.table2();
+        console.log(data2);
+        setTable2(data2);
         break;
       case 3:
-        fetch('http://localhost:3000/api/structures/table3', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable3(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data3 = await db.table3();
+        setTable3(data3);
         break;
       case 4:
-        fetch('http://localhost:3000/api/structures/table4', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable4(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data4 = await db.table4();
+        setTable4(data4);
         break;
       case 5:
-        fetch('http://localhost:3000/api/structures/table5', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            // setTable5(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
         break;
       case 6:
-        fetch('http://localhost:3000/api/structures/table6', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable6(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data6 = await db.table6();
+        setTable6(data6);
         break;
       case 7:
-        fetch('http://localhost:3000/api/structures/table7', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable7(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data7 = await db.table7();
+        setTable7(data7);
         break;
       case 8:
-        fetch('http://localhost:3000/api/structures/table8', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable8(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data8 = await db.table8();
+        setTable8(data8);
         break;
       case 9:
-        fetch('http://localhost:3000/api/structures/table9', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setTable9(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const data9 = await db.table9();
+        setTable9(data9);
         break;
       default:
-        fetch('http://localhost:3000/api/structures', options)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            setCommunes(data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        const communes = await db.getAllCommunes();
+        setCommunes(communes);
         break;
     }
   };
@@ -169,7 +81,6 @@ function Statistique() {
       fetchTable(2);
       fetchTable(3);
       fetchTable(4);
-      // fetchTable(1);
       fetchTable(6);
       fetchTable(7);
       fetchTable(8);

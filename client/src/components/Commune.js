@@ -9,11 +9,10 @@ function Commune(props) {
 
   const fetchCommunes = async () => {
     const data = await db.getAllCommunes();
-    setCommunes(data.rows);
+    setCommunes(data);
   };
 
   const delete_structure = async (idCommune) => {
-    console.log(idCommune);
     const response = await db.deleteCommune(idCommune);
     if (!response.status === 400) {
       toast.success('Commune supprime');
@@ -29,7 +28,6 @@ function Commune(props) {
 
   return (
     <div className='container' style={{ marginTop: '100px' }}>
-      {console.log(communes)}
       <h3>Listes des Communes</h3>
       <table class='table table-striped'>
         <thead>
