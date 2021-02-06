@@ -535,7 +535,8 @@ class DB {
 
       let communes = response.rows.splice(0, response.total_rows - 3);
 
-      const degres = ['tres', 'assez', 'important', 'neutre', 'moins', 'peu'];
+      const degres = ['peu', 'moins', 'neutre', 'important', 'assez', 'tres'];
+
       const indicateursDePerformancePriseDecision = {};
       if (communes) {
         const keys = Object.keys(
