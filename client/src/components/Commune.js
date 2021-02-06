@@ -1,15 +1,26 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import DB from '../db';
+import { toast } from 'react-toastify';
 
-function Commune() {
-  const [db, setDb] = useState(new DB('survey'));
-
+function Commune(props) {
+  const { db } = props;
   const [communes, setCommunes] = useState([]);
 
   const fetchCommunes = async () => {
-    const communes = await db.getAllCommunes();
+    const data = await db.getAllCommunes();
+    setCommunes(data.rows);
+  };
+
+  const delete_structure = async (idCommune) => {
+    console.log(idCommune);
+    const response = await db.deleteCommune(idCommune);
+    if (!response.status === 400) {
+      toast.success('Commune supprime');
+      fetchCommunes();
+    } else {
+      toast.error('Erreur de supprimer');
+    }
   };
 
   useEffect(() => {
@@ -18,6 +29,7 @@ function Commune() {
 
   return (
     <div className='container' style={{ marginTop: '100px' }}>
+      {console.log(communes)}
       <h3>Listes des Communes</h3>
       <table class='table table-striped'>
         <thead>
@@ -29,15 +41,15 @@ function Commune() {
           </tr>
         </thead>
         <tbody>
-          {communes.map((commune, index) => {
+          {communes.map(({ doc, id }, index) => {
             return (
               <tr>
                 <th scope='row'>{++index}</th>
-                <td>{commune.nomStructure}</td>
-                <td>{commune.autreDocument}</td>
+                <td>{doc.nomStructure}</td>
+                <td>{doc.autreDocument}</td>
                 <td>
                   <button
-                    // onClick={() => delete_structure(commune.idStructure)}
+                    onClick={() => delete_structure(id)}
                     className='btn btn-danger'
                   >
                     Supprimer

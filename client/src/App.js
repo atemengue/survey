@@ -22,8 +22,15 @@ function App(props) {
           path='/formulaires'
           render={(props) => <Formulaire {...props} db={db} />}
         />
-        <Route path='/statistiques' component={<Statistique db={db} />} />
-        <Route path='/communes' component={<Commune db={db} />} />
+        <Route
+          path='/statistiques'
+          render={(props) => <Statistique {...props} db={db} />}
+        />
+
+        <Route
+          path='/communes'
+          render={(props) => <Commune {...props} db={db} />}
+        />
         <Route path='/' component={Acceuil} />
       </Switch>
       <ToastContainer />

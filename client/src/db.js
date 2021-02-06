@@ -17,7 +17,23 @@ class DB {
   }
 
   async getAllCommunes() {
-    let communes = await this.db.allDocs({ include_docs: true });
+    try {
+      let communes = await this.db.allDocs({ include_docs: true });
+      return communes;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async deleteCommune(id) {
+    try {
+      let doc = await this.db.get(id);
+      let res = await this.db.remove(doc);
+      console.log(res);
+      return res;
+    } catch (error) {
+      return error;
+    }
   }
 }
 
