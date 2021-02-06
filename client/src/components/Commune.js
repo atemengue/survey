@@ -1,51 +1,15 @@
 /** @format */
 
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import DB from '../db';
 
 function Commune() {
+  const [db, setDb] = useState(new DB('survey'));
+
   const [communes, setCommunes] = useState([]);
 
-  const fetchCommunes = () => {
-    fetch('http://localhost:3000/api/structures', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setCommunes(data);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(error);
-      });
-  };
-
-  const delete_structure = (id) => {
-    fetch('http://localhost:3000/api/structures', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: id }),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setCommunes(
-          communes.filter((commune) => commune.idStructure === data.id)
-        );
-        toast.success('Commune supprime');
-        fetchCommunes();
-      })
-      .catch((error) => {
-        toast.error('Erreur de supprimer');
-      });
+  const fetchCommunes = async () => {
+    const communes = await db.getAllCommunes();
   };
 
   useEffect(() => {
@@ -73,7 +37,7 @@ function Commune() {
                 <td>{commune.autreDocument}</td>
                 <td>
                   <button
-                    onClick={() => delete_structure(commune.idStructure)}
+                    // onClick={() => delete_structure(commune.idStructure)}
                     className='btn btn-danger'
                   >
                     Supprimer

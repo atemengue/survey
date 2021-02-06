@@ -1,5 +1,5 @@
 /** @format */
-
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,20 +9,25 @@ import Formulaire from './components/Formulaire';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 import Statistique from './components/Statistique';
+import DB from './db';
 
-function App() {
+function App(props) {
+  const [db, setDb] = useState(new DB('survey'));
+
   return (
     <div className='App'>
       <Header />
       <Switch>
-        <Route path='/formulaires' component={Formulaire} />
-        <Route path='/statistiques' component={Statistique} />
-        <Route path='/communes' component={Commune} />
+        <Route
+          path='/formulaires'
+          render={(props) => <Formulaire {...props} db={db} />}
+        />
+        <Route path='/statistiques' component={<Statistique db={db} />} />
+        <Route path='/communes' component={<Commune db={db} />} />
         <Route path='/' component={Acceuil} />
       </Switch>
       <ToastContainer />
       <ScrollToTop />
-      {/* <Footer /> */}
     </div>
   );
 }
