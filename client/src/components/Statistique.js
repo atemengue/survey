@@ -38,7 +38,6 @@ function Statistique({ db }) {
         break;
       case 2:
         const data2 = await db.table2();
-        console.log(data2);
         setTable2(data2);
         break;
       case 3:

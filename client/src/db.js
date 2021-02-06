@@ -49,12 +49,8 @@ class DB {
           fields: ['pcdExist', 'visionStrategique'],
         },
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+      .then(function (response) {})
+      .catch(function (err) {});
 
     this.db
       .createIndex({
@@ -62,12 +58,8 @@ class DB {
           fields: ['pcdExist'],
         },
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+      .then(function (response) {})
+      .catch(function (err) {});
 
     this.db
       .createIndex({
@@ -75,12 +67,8 @@ class DB {
           fields: ['visionStrategique'],
         },
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+      .then(function (response) {})
+      .catch(function (err) {});
   }
 
   async table1() {

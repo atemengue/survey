@@ -183,29 +183,6 @@ const Content = (props) => {
     }
   };
 
-  // const onSave = (event) => {
-  //   event.preventDefault();
-  //   setLoading(true);
-  //   console.log(commune);
-  //   fetch('http://localhost:3000/api/structures', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(commune),
-  //   })
-  //     .then((data) => {
-  //       setLoading(false);
-  //       toast.success('Commune Ajoutee');
-  //       props.history.push('/temp');
-  //       props.history.goBack();
-  //     })
-  //     .catch((error) => {
-  //       setLoading(false);
-  //       toast.success('Erreur verifier les champs');
-  //     });
-  // };
-
   const onSave = async (event) => {
     event.preventDefault();
     setLoading(true);
